@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/css/bootstrap/bootstrap.min.css">
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/base.css">
+        <link rel="stylesheet" href="/css/login.css">
+
+        <title>Jogo da Memória - Login</title>
+    </head>
+    <body>
+        
+        <!-- Navegação -->
+        <div id="navbar" class="container-fluid p-0">
+            <div th:replace="/fragments/navigation :: navbar-without-login-item"></div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div id="content" class="container-fluid h-100">
+
+            <div class="row h-100 d-flex flex-wrap justify-content-center align-items-center">
+
+                <div id="card-login-ifba" class="d-flex flex-column align-items-center col-md-3 p-4 h-50">
+                    
+                    <img src="/imgs/logo-ifba.png" width="150px" height="179px">
+
+                    <h5 class="text-left text-white mx-auto my-auto">
+                        Instituto de Educação, Ciência e Tecnologia da Bahia - IFBA - Campus Irecê
+                    </h5>
+                </div>
+
+                <div id="card-login-form" class="d-flex flex-column align-items-center col-md-3 p-5 h-50">
+                    <h3 class="text-center mx-auto my-auto">Entrar</h3>
+                    
+                    <form th:action="@{/login}" method="POST">
+                    
+                        <div class="input-group my-2">
+                            <div class="input-group-prepend">
+                                <img class="input-group-text" src="/imgs/icon-user.svg" width="38px" height="38px">
+                            </div>
+                            <input id="username" name="username" class="form-control" type="text" placeholder="Usuário">
+                        </div>
+    
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                                <img class="input-group-text" src="/imgs/icon-password.svg" width="38px" height="38px">
+                            </div>
+                            <input id="password" name="password" class="form-control" type="password" placeholder="Senha">
+                        </div>
+    
+                        <input type="submit" class="form-control btn mb-2" value="Entrar">
+                    
+                    </form>
+                    
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Erro!</strong> Usuário e/ou senha inválido(s)!
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Rodapé -->
+        <div th:replace="/fragments/footer :: footer"></div>
+
+        <script src="/js/jquery/jquery-3.5.1.min.js"></script>
+        <script src="/js/popper/popper.min.js"></script>
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+    </body>
+</html>

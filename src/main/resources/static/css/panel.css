@@ -1,0 +1,23 @@
+a, a:hover {
+    text-decoration: none;
+}
+ 
+.card-body {
+    background-color: #008080;
+}
+
+.card-header {
+    background-color: #5F9EA0;
+    border: 2px solid #008080;
+}
+
+@media screen and (max-width: 600px) {
+
+    .card-body, .card-header {
+        min-width: 175px;
+    }
+
+    .col {
+        padding: 0;
+    }
+}

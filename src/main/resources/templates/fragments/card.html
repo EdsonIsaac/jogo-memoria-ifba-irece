@@ -1,0 +1,119 @@
+<div th:fragment="list-cards">
+    
+    <div th:if="${#lists.size(cards)} > 0">
+
+        <div class="d-flex flex-wrap justify-content-center align-items-center">
+
+            <div th:each="card, row : ${cards}">
+    
+                <div class="card m-2">
+    
+                    <div class="row my-1">
+                        <div class="col">
+                            <img th:src="${card.cardOne}" width="100px" height="150px">
+                        </div>
+                        <div class="col">
+                            <img th:src="${card.cardTwo}" width="100px" height="150px">
+                        </div>
+                    </div>
+    
+                    <div class="row my-1">
+                        <div class="col">
+                            <button class="btn btn-danger w-100" th:onclick="'delete_card(\'' + ${card.id} + '\')'">Excluir</button>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+        
+        </div>
+
+    </div>
+
+    <div th:if="${#lists.size(cards)} == 0">
+        <div class="px-2">
+            <h4>Nenhuma carta cadastrada!</h4>
+        </div>
+    </div>
+
+</div>
+
+<div th:fragment="modal-add-card">
+
+    <div class="modal fade" id="modalFormCadastrarCartas" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                                
+        <div class="modal-dialog modal-lg">
+            
+            <div class="modal-content">
+                
+                <form id="formCadastrarCartas">
+                    
+                    <div class="modal-header">
+                        <h5 class="modal-title text-white" id="modalLabel">Cadastrar Cartas</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        
+                        <div class="row d-flex justify-content-between align-items-center">
+                            
+                            <div class="col-sm-5 d-flex justify-content-center mb-3">
+                                <img id="imgCardOne" width="100px" height="150px">
+                            </div>
+
+                            <div class="col-sm-5 d-flex justify-content-center mb-3">
+                                <img id="imgCardTwo" width="100px" height="150px">
+                            </div>
+                        </div>
+
+                        <div class="row d-flex justify-content-between align-items-center">
+
+                            <div class="col-sm-5">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="cardOne" id="cardOne" aria-describedby="inputGroupFileAddon01" accept=".jpg, .jpeg, .png, .svg">
+                                        <label class="custom-file-label" for="cardOne" id="labelCardOne">Selecionar arquivo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-5">
+                                <div class="input-group mb-3">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" name="cardTwo" id="cardTwo" aria-describedby="inputGroupFileAddon02" accept=".jpg, .jpeg, .png, .svg">
+                                        <label class="custom-file-label" for="cardTwo" id="labelCardTwo">Selecionar arquivo</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div class="row d-flex justify-content-around align-items-center">
+
+                            <div class="col-sm-12">
+                                <div class="text-justify">
+                                    <strong>Obs.: </strong> É recomendado que ambas as imagens possuam as seguintes dimensões de largura e altura, respectivamente: 100x150 pixels.
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <input type="submit" class="btn btn-success" value="Salvar">
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

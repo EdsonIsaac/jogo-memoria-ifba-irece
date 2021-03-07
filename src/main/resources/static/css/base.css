@@ -1,0 +1,20 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background-color: #5F9EA0;
+}
+
+nav, footer {
+    background-color: #008080;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+#content {
+    min-height: calc(100vh - 70px);
+}

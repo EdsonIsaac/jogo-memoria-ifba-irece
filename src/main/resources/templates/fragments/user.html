@@ -1,0 +1,107 @@
+<div th:fragment="list-users">
+    
+    <div th:if="${#lists.size(users)} > 0">
+        
+        <table id="table-users" class="table table-hover table-borderless bg-white table-responsive">
+            <thead style="background-color: #008080; color: white;" class="border-0">
+                <tr>
+                    <th scope="col" style="width: 05%;" class="text-center">#</th>
+                    <th scope="col" style="width: 50%;">Nome</th>
+                    <th scope="col" style="width: 40%;">Usuário</th>
+                    <th scope="col" style="width: 05%;" class="text-center">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="listUser, row : ${users}">
+                    
+                    <th scope="row" class="text-center align-middle" th:text="${row.count}"></th>
+                    <td class="align-middle" th:text="${listUser.name}"></td>
+                    <td class="align-middle" th:text="${listUser.username}"></td>
+                    <td class="text-center align-middle">
+                       
+                        <div th:if="${user.id == listUser.id}">
+                            <button type="button" class="btn btn-danger" disabled>Excluir</button> 
+                        </div>
+                        
+                        <div th:if="${user.id != listUser.id}">
+                            <button type="button" class="btn btn-danger" th:onclick="'delete_user(\'' + ${listUser.id} + '\')'">Excluir</button> 
+                        </div>
+                       
+                    </td>
+                </tr>
+            </tbody>
+    
+        </table>
+    
+    </div>
+    
+    <div th:if="${#lists.size(users)} == 0">
+        <div class="px-2">
+            <h4>Nenhum usuário cadastrado!</h4>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="modal-add-user">
+
+    <div class="modal fade" id="modalFormCadastrarUsuario" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+                                
+        <div class="modal-dialog modal-lg">
+            
+            <div class="modal-content">
+                
+                <form id="formCadastrarUsuario">
+                    
+                    <div class="modal-header">
+                        <h5 class="modal-title text-white" id="modalLabel">Cadastrar Usuário</h5>
+                        <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        
+                        <div class="row mb-2">
+
+                            <div class="col-sm-12">
+                                <label for="name">Nome do usuário</label>
+                                <input id="name" type="text" class="form-control" name="name" title="Nome do usuário" required>
+                            </div>
+
+                        </div>
+
+                        <div class="row mb-2">
+
+                            <div class="col-sm-4">
+                                <label for="username">Usuário</label>
+                                <input id="username" type="text" class="form-control" name="username" title="Usuário" required>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="password">Senha</label>
+                                <input id="password" type="password" class="form-control" name="password" title="Senha" required>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="confirmPassword">Confirmar senha</label>
+                                <input id="confirmPassword" type="password" class="form-control" name="confirmPassword" title="Confirmar senha" required>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <input type="submit" class="btn btn-success" value="Salvar">
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
